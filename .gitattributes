@@ -1,0 +1,2 @@
+# Keep the original bytes of the frozen Python scripts on checkout.
+*.py -text
