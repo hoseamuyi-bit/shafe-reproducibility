@@ -7,15 +7,14 @@ from shutil import copyfileobj
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
-from urllib.parse import quote
 from urllib.request import urlopen
 from zipfile import ZipFile
 
 
 PROJECT = Path(__file__).resolve().parent
 ARCHIVE_BASE = (
-    "https://raw.githubusercontent.com/hoseamuyi-bit/shafe-reproducibility/"
-    "b2c7e9a3dabf3e764cee831ff14c77ff9e50f193/"
+    "https://github.com/hoseamuyi-bit/shafe-reproducibility/"
+    "releases/download/replication-data-v1/"
 )
 ARCHIVES = {
     "estimators": (
@@ -23,13 +22,17 @@ ARCHIVES = {
         "dd2cc42f992dd2e62cd28d9806c80e1bf228c2ea84ddb9b689aa351280f4ac55",
     ),
     "rankings": (
-        "SHAFE模型排序确认_复现包.zip",
+        "SHAFE_COCO_RealSR_rankings.zip",
         "2006fa0d5cfc1702697e4450ccc848f6ab5bf64e577e34bc04b1bd00af70083a",
     ),
     "arkitscenes": (
-        "SHAFE_ARKitScenes独立确认复算包.zip",
+        "SHAFE_ARKitScenes_confirmation.zip",
         "743bcc7030f8520e4a6bec402b5cedf6542e986ca262dd9d957157d3e412d51c",
     ),
+}
+LEGACY_ARCHIVE_NAMES = {
+    "rankings": "SHAFE模型排序确认_复现包.zip",
+    "arkitscenes": "SHAFE_ARKitScenes独立确认复算包.zip",
 }
 
 
@@ -37,11 +40,14 @@ def unpack_experiment(experiment, archive_directory, stage):
     filename, expected_digest = ARCHIVES[experiment]
     if archive_directory is None:
         archive_path = stage / filename
-        with urlopen(ARCHIVE_BASE + quote(filename), timeout=60) as response:
+        with urlopen(ARCHIVE_BASE + filename, timeout=60) as response:
             with archive_path.open("wb") as file:
                 copyfileobj(response, file)
     else:
         archive_path = archive_directory / filename
+        legacy_filename = LEGACY_ARCHIVE_NAMES.get(experiment)
+        if legacy_filename and not archive_path.exists():
+            archive_path = archive_directory / legacy_filename
 
     with archive_path.open("rb") as file:
         digest = file_digest(file, "sha256").hexdigest()
