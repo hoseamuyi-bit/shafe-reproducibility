@@ -21,12 +21,12 @@ To use the three archives already downloaded into a directory, run `python repro
 
 ## Frozen experiment records
 
-The original protocols, per-scene scores, source manifests, and pixel-replay records are available at the [frozen archive commit](https://github.com/hoseamuyi-bit/shafe-reproducibility/tree/b2c7e9a3dabf3e764cee831ff14c77ff9e50f193). Each ZIP also contains its original README and retains the directory layout used by the archived scripts.
+The original protocols, per-scene scores, source manifests, and pixel-replay records are available in [SHAFE Replication Data v1](https://github.com/hoseamuyi-bit/shafe-reproducibility/releases/tag/replication-data-v1). Each ZIP also contains its original README and retains the directory layout used by the archived scripts.
 
 | Experiment | Download | SHA-256 |
 | --- | --- | --- |
-| Estimators and registration | [ZIP](https://raw.githubusercontent.com/hoseamuyi-bit/shafe-reproducibility/b2c7e9a3dabf3e764cee831ff14c77ff9e50f193/SHAFE_experiment_reproducibility.zip) | `dd2cc42f992dd2e62cd28d9806c80e1bf228c2ea84ddb9b689aa351280f4ac55` |
-| COCO and RealSR rankings | [ZIP](https://raw.githubusercontent.com/hoseamuyi-bit/shafe-reproducibility/b2c7e9a3dabf3e764cee831ff14c77ff9e50f193/SHAFE%E6%A8%A1%E5%9E%8B%E6%8E%92%E5%BA%8F%E7%A1%AE%E8%AE%A4_%E5%A4%8D%E7%8E%B0%E5%8C%85.zip) | `2006fa0d5cfc1702697e4450ccc848f6ab5bf64e577e34bc04b1bd00af70083a` |
-| ARKitScenes confirmation | [ZIP](https://raw.githubusercontent.com/hoseamuyi-bit/shafe-reproducibility/b2c7e9a3dabf3e764cee831ff14c77ff9e50f193/SHAFE_ARKitScenes%E7%8B%AC%E7%AB%8B%E7%A1%AE%E8%AE%A4%E5%A4%8D%E7%AE%97%E5%8C%85.zip) | `743bcc7030f8520e4a6bec402b5cedf6542e986ca262dd9d957157d3e412d51c` |
+| Estimators and registration | [`SHAFE_experiment_reproducibility.zip`](https://github.com/hoseamuyi-bit/shafe-reproducibility/releases/download/replication-data-v1/SHAFE_experiment_reproducibility.zip) | `dd2cc42f992dd2e62cd28d9806c80e1bf228c2ea84ddb9b689aa351280f4ac55` |
+| COCO and RealSR rankings | [`SHAFE_COCO_RealSR_rankings.zip`](https://github.com/hoseamuyi-bit/shafe-reproducibility/releases/download/replication-data-v1/SHAFE_COCO_RealSR_rankings.zip) | `2006fa0d5cfc1702697e4450ccc848f6ab5bf64e577e34bc04b1bd00af70083a` |
+| ARKitScenes confirmation | [`SHAFE_ARKitScenes_confirmation.zip`](https://github.com/hoseamuyi-bit/shafe-reproducibility/releases/download/replication-data-v1/SHAFE_ARKitScenes_confirmation.zip) | `743bcc7030f8520e4a6bec402b5cedf6542e986ca262dd9d957157d3e412d51c` |
 
 The replay checks saved acquisition and pixel-replay records as part of the audits. To rerun model inference or regenerate scores from pixels, obtain the upstream images and weights identified in the corresponding archive, then configure the dataset and model paths in a separate run directory. The archive READMEs give the relevant entry points and environment details.
